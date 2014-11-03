@@ -9,8 +9,8 @@
 			<br>
 			<br>
 			<g:form url="[controller:'user',action:'register']">
-				<label for="userName">Username</label>
-				<g:textField name="userName"/>
+				<label for="username">Username</label>
+				<g:textField name="username"/>
 				<br/>
 				<label for="password">Password</label>
 				<g:field type="password" name="password"/>

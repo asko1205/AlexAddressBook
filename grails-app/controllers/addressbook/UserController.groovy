@@ -13,7 +13,6 @@ class UserController {
 			u.save()
 			session.user = u
 			redirect(controller:'AddressBook', view:'index.gsp')
-
 		} else if (session.user) {
 			// don't allow registration while user is logged in
 			redirect(controller:'AddressBook', view:'index.gsp')
@@ -24,7 +23,8 @@ class UserController {
 	def login = {
 		if (request.method == 'POST') {
 			def passwordHashed = params.password.encodeAsPassword()
-			def u = User.findByUsernameAndPasswordHashed(params.username, passwordHashed)
+			System.out.println(passwordHashed)
+			def u = User.findByUsernameAndPassword(params.username, passwordHashed)
 			if (u) {
 				// username and password match -> log in
 				session.user = u
@@ -38,6 +38,13 @@ class UserController {
 			redirect(controller:'AddressBook', view:'index.gsp')
 		}
 	}
+	
+	def logout = {
+		session.invalidate()
+//		redirect(controller:'User', view:'login.gsp')
+		render "logged out!"
+	}
+	
 	
 	
 }

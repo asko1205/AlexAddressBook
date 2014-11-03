@@ -1,6 +1,6 @@
 package addressbook
 
 class User {
-	String userName
-	String password
+	String username
+	String password //ONLY HASHED VERSION STORED
 }
