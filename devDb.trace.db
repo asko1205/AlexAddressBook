@@ -1,0 +1,6 @@
+11-03 13:03:38 jdbc[12]: exception
+org.h2.jdbc.JdbcSQLException: Table "USER_CONTACT" not found; SQL statement:
+alter table user_contact drop constraint FK_qt05uxtkdoic3mao76g30sn90 if exists [42102-176]
+11-03 13:03:38 jdbc[12]: exception
+org.h2.jdbc.JdbcSQLException: Table "USER_CONTACT" not found; SQL statement:
+alter table user_contact drop constraint FK_tgjgako38a8ow5ov4i4fpdlj8 if exists [42102-176]

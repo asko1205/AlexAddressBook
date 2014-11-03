@@ -4,7 +4,8 @@ class AddressBookController {
 
     def index() {
 		if(session.user){
-			def list = Contact.findAll()
+			System.out.println(session.user.id)
+			def list = session.user.contacts
 			[list:list]
 		}
 		else{
@@ -19,6 +20,7 @@ class AddressBookController {
 	def saveContact(){
 		Contact c = new Contact(firstName: params.firstName, lastName: params.lastName, address:params.address, city:params.city, zipCode:params.zipCode, state:params.state, telephoneNumber:params.telephoneNumber)
 		c.save()
+		session.user.addToContacts(c)
 		redirect(view: 'index.gsp')
 	}
 	

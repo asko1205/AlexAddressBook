@@ -9,5 +9,6 @@ class Contact {
 	int zipCode
 	String state
 	String telephoneNumber
+	static belongsTo = [user: User]
 	
 }
