@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta name="layout" content="main"/>
-		<title>Add Contact</title>
+		<title>Add your Contact</title>
 	</head>
 	<body>
 		<h2>Add a contact</h2>
