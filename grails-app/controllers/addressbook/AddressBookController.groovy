@@ -3,8 +3,14 @@ package addressbook
 class AddressBookController {
 
     def index() {
-		def list = Contact.findAll()
-		[list:list]
+		if(session.user){
+			def list = Contact.findAll()
+			[list:list]
+		}
+		else{
+			redirect(controller:'User', action:'login')
+		}
+		
 	}
 	
 	def addContact(){
@@ -27,7 +33,7 @@ class AddressBookController {
 		def searchTerms = params.searchContactName.split(" ")
 		def allResults = []
 		for(searchTerm in searchTerms){
-			def list = Contact.findAllByLastNameOrFirstName(searchTerm, searchTerm)
+			def list = Contact.findAllByLastNameOrFirstNameIlike(searchTerm, searchTerm)
 			allResults.addAll(list)
 		}
 		allResults.unique()

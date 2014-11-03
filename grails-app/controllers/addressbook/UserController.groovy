@@ -31,7 +31,7 @@ class UserController {
 				redirect(controller:'AddressBook', view:'index.gsp')
 			} else {
 				flash.message = "User not found"
-				redirect(controller:'User', view:'login.gsp')
+				redirect(controller:'User', action:'login')
 			}
 		} else if (session.user) {
 			// don't allow login while user is logged in

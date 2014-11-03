@@ -14,6 +14,9 @@
 			       <g:link controller="user" action="register">Sign up now!</g:link>
 		      </p>
 		      <br>
+		      <g:if test="${flash.message}">
+		          <div class="message">${flash.message}</div>
+		      </g:if>
 		      <p>
 		        <label for="username">Username</label>
 		        <g:textField name="username" />
