@@ -6,6 +6,12 @@
 	</head>
 	<body>
 		<h2>My Address Book</h2>
+		<g:if test="${session?.user}">
+			<div id="login">
+			        ${session?.user?.username} |
+			        <g:link controller="user" action="logout">Logout</g:link></div>
+			<!-- END #login -->
+		</g:if>
 		<br>
 		<!-- if there's no contacts yet, display a message -->
 		<g:if test="${list}">

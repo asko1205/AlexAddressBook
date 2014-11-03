@@ -41,8 +41,7 @@ class UserController {
 	
 	def logout = {
 		session.invalidate()
-//		redirect(controller:'User', view:'login.gsp')
-		render "logged out!"
+
 	}
 	
 	
