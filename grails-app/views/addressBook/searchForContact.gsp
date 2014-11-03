@@ -5,18 +5,11 @@
 		<title>Render Domain</title>
 	</head>
 	<body>
-		<h2>My Address Book</h2>
+		<h2>Search Results</h2>
+		<a href="${createLink(action: 'index')}">Back</a>
 		<br>
 		<!-- if there's no contacts yet, display a message -->
 		<g:if test="${list}">
-			<a href="${createLink(action: 'addContact')}">Add Contact</a>
-			<br>
-			<br>
-			<g:form action="searchForContact">
-				Search for contact: 
-				<label for="searchContactName">First Name and/or Last Name</label>
-				<g:textField name="searchContactName" /> <g:submitButton name="search" value="search" />
-			</g:form>
 			<br>
 			<br>
 			<g:each in="${list}" var="contact">
@@ -29,7 +22,7 @@
 			</g:each>
 		</g:if>
 		<g:else>
-			You don't have any contacts yet! <a href="${createLink(action: 'addContact')}">Add Contact</a>
+			No results found :(
 		</g:else>
 		
 		
