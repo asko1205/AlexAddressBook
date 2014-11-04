@@ -12,7 +12,7 @@
 			<div class="row">
 				<a href="${createLink(action: 'index')}"><span class="glyphicon glyphicon-arrow-left"></span> Back</a>
 			</div>
-			<br>
+
 			<!-- if there's no contacts yet, display a message -->
 			<g:if test="${list}">
 				<br>

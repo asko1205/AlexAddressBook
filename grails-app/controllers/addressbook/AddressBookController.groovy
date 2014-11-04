@@ -42,7 +42,7 @@ class AddressBookController {
 		def searchTerms = params.searchContactName.split(" ")
 		def allResults = []
 		for(searchTerm in searchTerms){
-			def list = Contact.findAllByLastNameOrFirstNameIlike(searchTerm, searchTerm)
+			def list = Contact.findAllByLastNameIlikeOrFirstNameIlike(searchTerm, searchTerm)
 			allResults.addAll(list)
 		}
 		allResults.unique()

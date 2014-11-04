@@ -31,7 +31,7 @@
 					</div>
 					<div class="row">
 						<label for="searchContactName">First Name and/or Last Name</label>
-						<g:textField name="searchContactName" class="form-control"/> <g:submitButton name="search" value="search" class="btn btn-primary" />
+						<g:textField name="searchContactName" class="form-control"/> <g:submitButton name="search" value="Search" class="btn btn-primary" />
 					</div>
 				</div>
 			</g:form>
