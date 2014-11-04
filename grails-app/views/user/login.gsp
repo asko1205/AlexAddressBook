@@ -36,14 +36,14 @@
 		        <g:passwordField name="password" class="form-control" />
 		      </p>
 		    </div>
+		    <br>
 		    <div class="row">
 		      <p class="button">
 		        <label>&nbsp;</label>
-		        <g:submitButton class="button" name="submitButton" value="Login" />
+		        <g:submitButton class="button btn btn-primary" name="submitButton" value="Login" />
 		      </p>
 		    </div>
 		    </fieldset>
-		    <button type="button" class="btn btn-danger">Primary</button>
 	  </g:form>
 	
 	</body>
