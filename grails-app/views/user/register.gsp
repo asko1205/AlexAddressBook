@@ -2,6 +2,7 @@
 <html>
 	<head>
 		<meta name="layout" content="main" />
+		<r:require modules="bootstrap"/>
 		<title>Register</title>
 	</head>
 	<body>
