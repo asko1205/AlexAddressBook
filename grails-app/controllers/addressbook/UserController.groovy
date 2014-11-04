@@ -5,15 +5,17 @@ class UserController {
     def index() { }
 	
 	def register(){
+
 		// new user posts his registration details
 		if (request.method == 'POST') {
 			// create domain object and assign parameters using data binding
 			def u = new User(params)
 			u.password = u.password.encodeAsPassword()
+			u.confirm = u.confirm.encodeAsPassword()
 
 			if (! u.save()) {
 				// validation failed, render registration page again
-				flash.message = "User already exists!"
+//				flash.message = "User already exists!"
 				return [user:u]
 			} else {
 				// validate/save ok, store user in session, redirect to homepage
