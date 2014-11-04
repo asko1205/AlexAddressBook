@@ -5,9 +5,14 @@
 		<title>Logged out</title>
 	</head>
 	<body>
-		<h2>You've logged out!</h2>
-		<a href="${createLink(action: 'login')}">Log back in?</a>
+		<fieldset>
+			<div class="row">
+				<h2>You've logged out!</h2>
+			</div>
+			<br>
+			<div class="row">
+				Want to <a href="${createLink(action: 'login')}">log back in?</a>
+			</div>
+		</fieldset>
 	</body>
-
-
 </html>

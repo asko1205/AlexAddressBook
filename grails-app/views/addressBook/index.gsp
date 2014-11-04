@@ -21,7 +21,7 @@
 		<!-- if there's no contacts yet, display a message -->
 		<g:if test="${list}">
 			<div class="row">
-				<a class="btn btn-success btnText" href="${createLink(action: 'addContact')}">Add Contact</a>
+				<a class="btn btn-success btnText" href="${createLink(action: 'addContact')}"><span class="glyphicon glyphicon-pencil"></span> Add Contact</a>
 			</div>
 			<br>
 			<g:form action="searchForContact" class="form-inline">
@@ -51,7 +51,7 @@
 					&nbsp; ${contact.city }, ${contact.state } ${contact.zipCode }<br>
 				</div>
 				<div class="row">
-					&nbsp; <span class="label label-danger"><a class="btnText" href="${createLink(action: 'deleteContact', params:[id:contact.id])}">Delete</a></span>
+					&nbsp; <span class="label label-danger"><a class="btnText" href="${createLink(action: 'deleteContact', params:[id:contact.id])}"><span class="glyphicon glyphicon-trash"></span> Delete</a></span>
 				</div>
 				<div class="row">
 					&nbsp; -----------------------------------
@@ -60,7 +60,7 @@
 		</g:if>
 		<g:else>
 			<div class="row">
-				You don't have any contacts yet! <a href="${createLink(action: 'addContact')}">Add Contact</a>
+				You don't have any contacts yet! <a class="btn btn-success btnText" href="${createLink(action: 'addContact')}"><span class="glyphicon glyphicon-pencil"></span> Add Contact</a>
 			</div>
 		</g:else>
 		

@@ -2,30 +2,48 @@
 <html>
 	<head>
 		<meta name="layout" content="main"/>
-		<title>Render Domain</title>
+		<title>Search for Contact</title>
 	</head>
 	<body>
-		<h2>Search Results</h2>
-		<a href="${createLink(action: 'index')}">Back</a>
-		<br>
-		<!-- if there's no contacts yet, display a message -->
-		<g:if test="${list}">
+		<fieldset>
+			<div class="row">
+				<h2>Search Results</h2>
+			</div>
+			<div class="row">
+				<a href="${createLink(action: 'index')}"><span class="glyphicon glyphicon-arrow-left"></span> Back</a>
+			</div>
 			<br>
-			<br>
-			<g:each in="${list}" var="contact">
-				<h4> > ${contact.firstName} ${contact.lastName}</h4>
-				&nbsp; ${contact.telephoneNumber }<br>
-				&nbsp; ${contact.address }<br> 
-				&nbsp; ${contact.city }, ${contact.state } ${contact.zipCode }<br>
-				&nbsp; <h5><a href="${createLink(action: 'deleteContact', params:[id:contact.id])}">Delete Contact</a></h5>
-				&nbsp; -----------------------------------
-			</g:each>
-		</g:if>
-		<g:else>
-			No results found :(
-		</g:else>
-		
-		
-		
+			<!-- if there's no contacts yet, display a message -->
+			<g:if test="${list}">
+				<br>
+				<br>
+				<g:each in="${list}" var="contact">
+					<div class="row">
+						<h4> > ${contact.firstName} ${contact.lastName}</h4>
+					</div>
+					<div class="row">
+						&nbsp; ${contact.telephoneNumber }<br>
+					</div>
+					<div class="row">
+						&nbsp; ${contact.address }<br>
+					</div>
+					<div class="row"> 
+						&nbsp; ${contact.city }, ${contact.state } ${contact.zipCode }<br>
+					</div>
+					<div class="row">
+						&nbsp; <span class="label label-danger"><a class="btnText" href="${createLink(action: 'deleteContact', params:[id:contact.id])}"><span class="glyphicon glyphicon-trash"></span> Delete</a></span>
+					</div>
+					<div class="row">
+						&nbsp; -----------------------------------
+					</div>
+				</g:each>
+			</g:if>
+			<g:else>
+				<div class="row">
+					No results found :(
+				</div>
+			</g:else>
+			
+		</fieldset>
 	</body>
 </html>
