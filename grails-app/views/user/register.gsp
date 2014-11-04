@@ -7,7 +7,20 @@
 	<body>
 			<h2>Register</h2>
 			<br>
+			<div class="row">
+		      <p class="info">
+			       Please give a username and password. <br />
+			       Already have an account?
+			       <g:link controller="user" action="login">Log in now!</g:link>
+		      </p>
+		    </div>
 			<br>
+			<div class="row">
+		      <g:if test="${flash.message}">
+		          <div class="message">${flash.message}</div>
+		      </g:if>
+		    </div>
+		    
 			<g:form url="[controller:'user',action:'register']">
 				<label for="username">Username</label>
 				<g:textField name="username"/>

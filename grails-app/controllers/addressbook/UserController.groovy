@@ -10,9 +10,17 @@ class UserController {
 			// create domain object and assign parameters using data binding
 			def u = new User(params)
 			u.password = u.password.encodeAsPassword()
-			u.save()
-			session.user = u
-			redirect(controller:'AddressBook', view:'index.gsp')
+
+			if (! u.save()) {
+				// validation failed, render registration page again
+				flash.message = "User already exists!"
+				return [user:u]
+			} else {
+				// validate/save ok, store user in session, redirect to homepage
+				session.user = u
+				redirect(controller:'AddressBook', view:'index.gsp')
+			}
+
 		} else if (session.user) {
 			// don't allow registration while user is logged in
 			redirect(controller:'AddressBook', view:'index.gsp')
@@ -23,7 +31,6 @@ class UserController {
 	def login = {
 		if (request.method == 'POST') {
 			def passwordHashed = params.password.encodeAsPassword()
-			System.out.println(passwordHashed)
 			def u = User.findByUsernameAndPassword(params.username, passwordHashed)
 			if (u) {
 				// username and password match -> log in
