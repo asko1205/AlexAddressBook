@@ -23,7 +23,8 @@ class AddressBookController {
 		Contact c = new Contact(firstName: params.firstName, lastName: params.lastName, address:params.address, city:params.city, zipCode:params.zipCode, state:params.state, telephoneNumber:params.telephoneNumber, user: session.user)
 		if (!c.save()) {
 			c.errors.each {
-				println it
+//				flash.message = "Whoops -- something went wrong. Check to make sure all your fields are filled in and the phone number is in the format"
+//				return [contact:c]
 			}
 		}
 		

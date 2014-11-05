@@ -46,13 +46,19 @@
 					<br/>
 				</div>
 				<div class="row">
-					<label for="telephoneNumber">Telephone Number (XXX)XXX-XXXX</label>
+					<label for="telephoneNumber">Telephone Number XXX-XXX-XXXX</label>
 					<g:textField name="telephoneNumber" class="form-control"/>
 					<br/>
 				</div>
 				<div class="row">
 					<g:submitButton name="create" class="btn btn-primary" value="Save" />
 				</div>
+				
+				<!--  <div class="row">
+			      <g:if test="${flash.message}">
+			          <div class="message">${flash.message}</div>
+			      </g:if>
+			    </div>-->
 			</g:form>
 		</fieldset>
 	</body>
