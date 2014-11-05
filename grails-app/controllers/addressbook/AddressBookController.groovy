@@ -51,10 +51,27 @@ class AddressBookController {
 	}
 	
 	def searchForContact(){
+		def user = User.findByUsername(session.user.username)
+		def userContacts = user.contacts
+		
 		def searchTerms = params.searchContactName.split(" ")
 		def allResults = []
 		for(searchTerm in searchTerms){
-			def list = Contact.findAllByLastNameIlikeOrFirstNameIlike(searchTerm, searchTerm)
+			
+			def c = Contact.createCriteria()
+			def list = c.list {
+				and {
+					like('user', user)
+					or {
+						ilike('firstName', '%' + searchTerm + '%')
+						ilike('lastName', '%' + searchTerm + '%')
+					}
+				}
+			}
+			
+			
+//			def list = Contact.findAllWhere(user: user, firstName: searchTerm, lastName: searchTerm)
+//			def list = Contact.findAllByLastNameIlikeOrFirstNameIlike(searchTerm, searchTerm)
 			allResults.addAll(list)
 		}
 		allResults.unique()
