@@ -13,8 +13,16 @@
 			<a href="${createLink(action: 'index')}"><span class="glyphicon glyphicon-arrow-left"></span> Back</a>
 			</div>
 			<br>
+
+			<div class="row">
+		      <g:hasErrors bean="${contact}">
+			      <div class="errors">
+			        <g:renderErrors bean="${contact}"/>
+			      </div>
+			  </g:hasErrors>
+		    </div>
 			<br>
-			<g:form action="saveContact">
+			<g:form action="addContact">
 				<div class="row">
 					<label for="firstName">First Name</label>
 					<g:textField name="firstName" class="form-control"/>
@@ -54,11 +62,6 @@
 					<g:submitButton name="create" class="btn btn-primary" value="Save" />
 				</div>
 				
-				<!--  <div class="row">
-			      <g:if test="${flash.message}">
-			          <div class="message">${flash.message}</div>
-			      </g:if>
-			    </div>-->
 			</g:form>
 		</fieldset>
 	</body>

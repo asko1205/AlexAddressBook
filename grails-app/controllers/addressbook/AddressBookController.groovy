@@ -17,20 +17,31 @@ class AddressBookController {
 	}
 	
 	def addContact(){
+		if (request.method == 'POST') {
+			Contact c = new Contact(firstName: params.firstName, lastName: params.lastName, address:params.address, city:params.city, zipCode:params.zipCode, state:params.state, telephoneNumber:params.telephoneNumber, user: session.user)
+			if (!c.save()) {
+				return [contact:c]
+			}
+			
+			def user = User.findByUsername(session.user.username)
+			user.addToContacts(c)
+			redirect(view: 'index.gsp')
+			
+		}
+		else {
+			render(view:'addContact')
+		}
 	}
 	
 	def saveContact(){
-		Contact c = new Contact(firstName: params.firstName, lastName: params.lastName, address:params.address, city:params.city, zipCode:params.zipCode, state:params.state, telephoneNumber:params.telephoneNumber, user: session.user)
-		if (!c.save()) {
-			c.errors.each {
-//				flash.message = "Whoops -- something went wrong. Check to make sure all your fields are filled in and the phone number is in the format"
-//				return [contact:c]
-			}
-		}
-		
-		def user = User.findByUsername(session.user.username)
-		user.addToContacts(c)
-		redirect(view: 'index.gsp')
+//		Contact c = new Contact(firstName: params.firstName, lastName: params.lastName, address:params.address, city:params.city, zipCode:params.zipCode, state:params.state, telephoneNumber:params.telephoneNumber, user: session.user)
+//		if (!c.save()) {
+//			return redirect(action:'addContact', params:[contact:c])
+//		}
+//		
+//		def user = User.findByUsername(session.user.username)
+//		user.addToContacts(c)
+//		redirect(view: 'index.gsp')
 	}
 	
 	def deleteContact(int id){
