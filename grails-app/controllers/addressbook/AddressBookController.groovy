@@ -33,16 +33,6 @@ class AddressBookController {
 		}
 	}
 	
-	def saveContact(){
-//		Contact c = new Contact(firstName: params.firstName, lastName: params.lastName, address:params.address, city:params.city, zipCode:params.zipCode, state:params.state, telephoneNumber:params.telephoneNumber, user: session.user)
-//		if (!c.save()) {
-//			return redirect(action:'addContact', params:[contact:c])
-//		}
-//		
-//		def user = User.findByUsername(session.user.username)
-//		user.addToContacts(c)
-//		redirect(view: 'index.gsp')
-	}
 	
 	def deleteContact(int id){
 		Contact c = Contact.get(id)
@@ -78,6 +68,16 @@ class AddressBookController {
 		
 		[list:allResults]
 
+	}
+	
+	def showDetail(){
+		def contactDetail = Contact.get(params.id)
+		if (contactDetail) {
+		render(template:"details", model:[contact:contactDetail])
+		}
+		else {
+		render "No message found with id: ${params.id}"
+		}
 	}
 	
 	

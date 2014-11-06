@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
+		<g:javascript library="jquery" />
 		<meta name="layout" content="main"/>
 		<title>My Address Book</title>
 	</head>
@@ -36,27 +37,33 @@
 				</div>
 			</g:form>
 			<br>
-
-			<g:each in="${list}" var="contact">
-				<div class="row">
-					<h4> > ${contact.firstName} ${contact.lastName}</h4>
+			<div class="row">
+				<div class="col-xs-6">
+					<g:each in="${list}" var="contact">
+						<g:remoteLink action="showDetail" id="${contact?.id }" update="details">
+							<div class="row">
+								<h4> > ${contact.firstName} ${contact.lastName}</h4>
+							</div>
+							<div class="row">
+								&nbsp; ${contact.telephoneNumber }<br>
+							</div>
+							<!--<div class="row">
+								&nbsp; ${contact.address }<br>
+							</div>
+							<div class="row"> 
+								&nbsp; ${contact.city }, ${contact.state } ${contact.zipCode }<br>
+							</div>
+							<div class="row">
+								&nbsp; <span class="label label-danger"><a class="btnText" href="${createLink(action: 'deleteContact', params:[id:contact.id])}"><span class="glyphicon glyphicon-trash"></span> Delete</a></span>
+							</div>-->
+							<br>
+						</g:remoteLink>
+					</g:each>
 				</div>
-				<div class="row">
-					&nbsp; ${contact.telephoneNumber }<br>
+				<div class="col-xs-6">
+					<div id="details"></div>
 				</div>
-				<div class="row">
-					&nbsp; ${contact.address }<br>
-				</div>
-				<div class="row"> 
-					&nbsp; ${contact.city }, ${contact.state } ${contact.zipCode }<br>
-				</div>
-				<div class="row">
-					&nbsp; <span class="label label-danger"><a class="btnText" href="${createLink(action: 'deleteContact', params:[id:contact.id])}"><span class="glyphicon glyphicon-trash"></span> Delete</a></span>
-				</div>
-				<div class="row">
-					&nbsp; -----------------------------------
-				</div>
-			</g:each>
+			</div>
 		</g:if>
 		<g:else>
 			<div class="row">
