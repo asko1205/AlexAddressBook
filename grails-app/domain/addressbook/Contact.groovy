@@ -6,7 +6,7 @@ class Contact {
 	String lastName
 	String address
 	String city
-	int zipCode
+	String zipCode
 	String state
 	String telephoneNumber
 	static belongsTo = [user: User]
