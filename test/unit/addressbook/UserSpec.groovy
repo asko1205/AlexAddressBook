@@ -20,7 +20,7 @@ class UserSpec extends Specification {
 		
 		given: "other required fields have value"
 			def user = new User(firstName: 'firstName', lastName: 'lastName', username: 'username', password: 'password');
-		when: "required field password is null"
+		when: "required field firstName is null"
 			user.firstName = null
 			user.validate()
 		then: 'validation should fail'
@@ -31,7 +31,7 @@ class UserSpec extends Specification {
 		
 		given: "other required fields have value"
 			def user = new User(firstName: 'firstName', lastName: 'lastName', username: 'username', password: 'password');
-		when: "required field password is null"
+		when: "required field lastName is null"
 			user.lastName = null
 			user.validate()
 		then: 'validation should fail'
