@@ -12,7 +12,7 @@ class User {
 	static constraints = {
 		firstName blank:false
 		lastName blank:false
-		username  blank:false, unique:true
+		username blank:false, unique:true
 		password  blank:false, validator: { val, obj ->
 		    //obj.confirm == val
 			if (obj.password != obj.confirm)

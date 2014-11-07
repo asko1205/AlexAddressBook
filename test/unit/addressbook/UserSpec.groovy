@@ -15,6 +15,66 @@ class UserSpec extends Specification {
     def cleanup() {
     }
 
-    void "test something"() {
-    }
+
+	void "test required firstName field"() {
+		
+		given: "other required fields have value"
+			def user = new User(firstName: 'firstName', lastName: 'lastName', username: 'username', password: 'password');
+		when: "required field password is null"
+			user.firstName = null
+			user.validate()
+		then: 'validation should fail'
+			user.hasErrors()
+	}
+	
+	void "test required lastName field"() {
+		
+		given: "other required fields have value"
+			def user = new User(firstName: 'firstName', lastName: 'lastName', username: 'username', password: 'password');
+		when: "required field password is null"
+			user.lastName = null
+			user.validate()
+		then: 'validation should fail'
+			user.hasErrors()
+	}
+	
+	void "test required username field"() {
+		
+		given: "other required fields have value"
+			def user = new User(firstName: 'firstName', lastName: 'lastName', username: 'username', password: 'password');
+		when: "required field username is null"
+			user.username = null
+			user.validate()
+		then: 'validation should fail'
+			user.hasErrors()
+			
+	}
+	
+	void "test required password field"() {
+		
+		given: "other required fields have value"
+			def user = new User(firstName: 'firstName', lastName: 'lastName', username: 'username', password: 'password');
+		when: "required field password is null"
+			user.password = null
+			user.validate()
+		then: 'validation should fail'
+			user.hasErrors()
+	}
+	
+	void "test nonmatching password and confirm"() {
+		
+		given: "other fields are valid"
+			def user = new User(firstName: 'firstName', lastName: 'lastName', username: 'username');
+		when: "password and confirm have different values"
+			user.password = 'password'
+			user.confirm = 'unpassword'
+			user.validate()
+		then: 'validation should fail'
+			user.hasErrors()
+	}
+	
+
+	
+	
+
 }
