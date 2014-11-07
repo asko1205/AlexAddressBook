@@ -25,4 +25,8 @@ class Contact {
 
 	}
 	
+	static mapping = {
+		sort lastName: "desc"
+	}
+	
 }
